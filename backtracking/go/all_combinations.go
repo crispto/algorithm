@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 func generateAllCombinations(n, k int) [][]int {
 	if n < k {
 		panic("非法参数")
@@ -52,10 +48,4 @@ func generateAllCombinationsDFS2(start, n, k int, tmp []int, result *[][]int) {
 		tmp = tmp[:len(tmp)-1]
 	}
 
-}
-func main() {
-	q := generateAllCombinations2(5, 3)
-	for i := range q {
-		fmt.Println(q[i])
-	}
 }
