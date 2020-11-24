@@ -3,7 +3,7 @@
 """
 
 
-def generate_all_combinations(n: int, k: int) -> List[int]:
+def generate_all_combinations(n: int, k: int) -> list[int]:
     """
     >>> generate_all_combinations(4, 2)
     [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]
@@ -13,7 +13,7 @@ def generate_all_combinations(n: int, k: int) -> List[int]:
     return result
 
 
-def generate_all_combinations_dfs(start: int, total: int, k: int, tmp: List[int], result: List[int]):
+def generate_all_combinations_dfs(start: int, total: int, k: int, tmp: list[int], result: list[int]):
     if k == 0:
         result.append(tmp[:])
         return
@@ -24,7 +24,6 @@ def generate_all_combinations_dfs(start: int, total: int, k: int, tmp: List[int]
 
 
 if __name__ == "__main__":
-    q = generate_all_combinations(5, 2)
-    print("start")
-    for i in q:
-        print(*i)
+    a = [1, 2, 3, 4]
+    b = any(i > 5 for i in a)
+    print(b)

@@ -10,7 +10,7 @@ def all_permutations(n: int, k: int) -> None:
     all_permutations_help(n, k, [], used)
 
 
-def all_permutations_help(n: int, k: int, tmp: [int], used: [int]):
+def all_permutations_help(n: int, k: int, tmp: list[int], used: list[int]):
     if len(tmp) == k:
         print(tmp)
         return
