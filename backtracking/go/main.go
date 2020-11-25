@@ -1,5 +1,5 @@
 package main
 
 func main() {
-	IsHamitonianCycle(graph, 0)
+	coloring_test()
 }
