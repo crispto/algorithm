@@ -16,11 +16,12 @@ def knight_tour(n: int) -> list[list[int]]:
 
 
 def kinght_tour_help(chess: list[list[int]], current_pos: list[int], current_level: int, origin_pos: tuple[int]) -> bool:
-    # print("{}".format(chess))
     if current_level == len(chess) * len(chess):
-        if current_pos == list(origin_pos):
-            return True
-        return can_access(current_pos, origin_pos)
+        # if current_pos == list(origin_pos):
+        #     return True
+        # return can_access(current_pos, origin_pos)
+        # 这里分为封闭式和开放式如果不需要满足条件2 为开放式
+        return True
 
     for next in valid_pos(chess, current_pos):
         chess[next[0]][next[1]] = current_level+1
