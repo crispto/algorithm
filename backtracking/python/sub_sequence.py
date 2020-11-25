@@ -20,4 +20,6 @@ def change_list(v: list[int]):
 
 
 if __name__ == "__main__":
-    sub_sequence(["A", "B", "C"])
+    # sub_sequence(["A", "B", "C"])
+    from . import n_queen
+    print(n_queen.can_attack((1, 2), (3, 4)))
