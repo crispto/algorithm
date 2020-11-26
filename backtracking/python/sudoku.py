@@ -13,10 +13,17 @@ def solve(matrix: list[list[int]]):
 
 
 def solve_tree(matrix: list[list[int]], level: int) -> bool:
+    """
+    每一个将要决定的空位相当于状态树的一行，开始时位于[0,0]，到[8,9]结束，也就是说 level 从0到81结束，
+    在该图的当前状态下安全的数字相当于树的一个子节点，
+    """
     if level == len(matrix) * len(matrix):
         return True
+    # i, j 是当前要决定的下标
     i, j = level//len(matrix), level % len(matrix)
     if matrix[i][j] == 0:
+        # 为0 代表未决定的， 可能衍生出多个子节点
+        # 需要用回溯递归dfs搜索
         for x in range(1, 10):
             if is_safe(matrix, i, j, x):
                 matrix[i][j] = x
@@ -24,11 +31,15 @@ def solve_tree(matrix: list[list[int]], level: int) -> bool:
                     return True
                 matrix[i][j] = 0
     else:
+        # 已经决定的节点，只会衍生出一个子节点
         return solve_tree(matrix, level+1)
     return False
 
 
 def is_safe(matrix: list[list[int]], i: int, j: int, x: int) -> bool:
+    """
+    满足三个条件，每行、每列、已经子方块内没有重复
+    """
     # row
     if any(matrix[i][v] == x for v in range(len(matrix))):
         return False
