@@ -6,6 +6,9 @@ fn coloring(graph: &Vec<Vec<i32>>, max_color: i32) -> Vec<i32> {
     return vec![];
 }
 
+pub mod coloring_mod1 {
+    pub fn eat() {}
+}
 fn coloring_help(
     graph: &Vec<Vec<i32>>,
     color_map: &mut Vec<i32>,
