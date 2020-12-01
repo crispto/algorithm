@@ -1,9 +1,11 @@
 [package]
-name = "rust"
-version = "0.1.0"
 authors = ["crispto <2273713147@qq.com>"]
 edition = "2018"
+name = "rust"
+version = "0.1.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+base64 = "0.13.0"
+md5 = "0.7.0"

@@ -22,7 +22,6 @@ func base16() {
 		panic(err)
 	}
 	fmt.Printf("decoded: %s\n", decoded)
-
 }
 
 func testbase64() {
