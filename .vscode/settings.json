@@ -1,4 +1,10 @@
 {
     "python.linting.enabled": true,
-    "python.pythonPath": "/usr/local/bin/python3"
+    "python.pythonPath": "/usr/local/bin/python3",
+    "rust-analyzer.inlayHints.typeHints": false,
+    "rust-analyzer.inlayHints.parameterHints": false,
+    "rust-analyzer.linkedProjects": [
+        "/Users/richardyang/coding/mix-language/algorithm/cipher/rust/Cargo.toml",
+        "/Users/richardyang/coding/mix-language/algorithm/backtracking/rust/Cargo.toml"
+    ],
 }
