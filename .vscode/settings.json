@@ -5,6 +5,7 @@
     "rust-analyzer.inlayHints.parameterHints": false,
     "rust-analyzer.linkedProjects": [
         "/Users/richardyang/coding/mix-language/algorithm/cipher/rust/Cargo.toml",
-        "/Users/richardyang/coding/mix-language/algorithm/backtracking/rust/Cargo.toml"
+        "/Users/richardyang/coding/mix-language/algorithm/backtracking/rust/Cargo.toml",
+        "/Users/richardyang/coding/mix-language/algorithm/data-structures/rust/Cargo.toml"
     ],
 }
