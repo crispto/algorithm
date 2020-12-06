@@ -99,9 +99,37 @@ def longest_norepeat_substring2(s: str) -> int:
         last[ind] = i
     return max(max_ret, len(s)-start)
 
+def jump(v: list[int]) ->int:
+    """
+    v 是每次能跳跃的最大步数，结果是能到达终点的最小步数
+    """
+    if len(v) <= 1:
+        return 0
+
+    start = 0
+    step = 0
+    t = [0]
+    while True:
+        if start + v[start] >=len(v)-1:
+            t.append(len(v)-1)
+            print(t)
+            return step + 1
+        max_next = start
+        max_cover = start
+        for i in range(v[start]+1):
+            if start +i + v[start+i] > max_cover:
+                max_cover = start+i + v[start+i]
+                max_next  =start+i
+        if max_next <= start:
+            t.reverse()
+            print(t)
+            return -1 #无法前进
+        step += 1
+        start = max_next
+        t.append(max_next)
+
 if __name__ == "__main__":
-    vs = ["abcabcefabc", "abc", "aaaaaa", "a"]
-    for v in vs:
-        print(longest_norepeat_substring2(v))
-        print(longest_norepeat_substring1(v))
+    v = [4, 2, 3, 5, 2, 1, 1, 2,  3, 5, 1,2]
+    p = jump(v)
+    print("step is {}".format(p))
 
