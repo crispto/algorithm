@@ -1,4 +1,7 @@
 def longest_incr_subset(l):
+    """
+    最长的递增数列（未必连续）的长度
+    """
     pass
 
 
@@ -128,8 +131,35 @@ def jump(v: list[int]) ->int:
         start = max_next
         t.append(max_next)
 
-if __name__ == "__main__":
-    v = [4, 2, 3, 5, 2, 1, 1, 2,  3, 5, 1,2]
-    p = jump(v)
-    print("step is {}".format(p))
+def change(n: int) -> int:
+    """
+    共有 100, 50 20, 10, 5 ,2, 1 这些面额
+    凑出 n <= 1000000 的总额
+    """
+    c = dict()
+    c.setdefault(0, 1)
+    c.setdefault(1, 1)
+    change_help(n, c)
+    print(c)
+    return c.get(n)
 
+   
+def change_help(n:int, c: dict) ->int:
+    if c.get(n):
+        return c.get(n)
+    v = 0
+    for i in [100, 50, 20, 10, 2, 1]:
+        if n -i >=0:
+            v += change_help(n-i, c)
+    c.setdefault(n, v)
+    return v
+
+def min_chess_path(v: list[list[int]])  ->int:
+    """
+    棋盘上每一个有一个数字，从左上角到右下角的最小路径和,
+    限制只能向右或向下走
+    """
+
+if __name__ == "__main__":
+    v = change(10)
+    print(v)
