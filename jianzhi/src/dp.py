@@ -1,3 +1,42 @@
+
+def longest_substring(s: str, k: int) -> int:
+    """
+    找到给定字符串（由小写字符组成）中的最长子串 T ， 要求 T 中的每一字符出现次数都不少于 k 。输出 T 的长度。
+
+    示例 1:
+
+    输入:
+    s = "aaabb", k = 3
+
+    输出:
+    3
+
+    最长子串为 "aaa" ，其中 'a' 重复了 3 次。
+
+    想法： 用一个二维矩阵存字符A在 下表 < i 中出现的次数，高度为 26, 宽度为 len(s)+1， 则 Time[a, i, j] = T[a, j+1] - T[a, i]， 就能快速定位到
+    字符 a 在[i, j] 范围内出现的次数
+    """
+    if len(s) == 0:
+        return 0
+    m = [[0 for _ in range(len(s)+1)] for _ in range(26)]
+    for i in range(len(s)):
+        a =s[i]
+        for j in range(i+1, len(s)+1):
+            m[ord(a) - ord('a')][j] +=1
+    max_ret = 0
+    for i in range(len(s)):
+        for j in range(i, len(s)):
+            valid = True
+            for x in s[i:j+1]:
+                ind = ord(x) - ord('a')
+                if m[ind][j+1] - m[ind][i] <k:
+                    valid = False
+                    break
+            if valid:
+                max_ret = max(max_ret, j-i+1)
+                max_i, max_j = i, j
+    return max_ret
+
 def longest_incr_subset(l):
     """
     最长的递增数列（未必连续）的长度
@@ -160,6 +199,8 @@ def min_chess_path(v: list[list[int]])  ->int:
     限制只能向右或向下走
     """
 
+
 if __name__ == "__main__":
-    v = change(10)
-    print(v)
+    s = ["aaabb", "a", "aaaa"]
+    for i in s:
+        print(longest_substring(i, 1))
