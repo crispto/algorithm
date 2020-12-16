@@ -1,23 +1,35 @@
-def solution(n: list[int]) ->int:
-    p = [1 for i in range(n)]
-    index = 0
-    current_num = 0
-    left = n
-    while left >1:
-        while current_num <3:
-            if p[index]==1:
-                current_num+=1
-        p[index]=0
-        index+=1
-        if index == len(p):
-            index=  0
-        left -=1
-        current_num = 0
-    for i in range(len(p)):
-        if p[i]==0:
-            return i
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+    def show(self):
+        while self:
+            print(self.val, end= ' ')
+            self = self.next
+        print()
 
-
+def reverse(v):
+    if not v:
+        return None
+    if not v.next:
+        return v
+    vh = ListNode(1)
+    head = v
+    while head:
+        insert_point = vh.next
+        vh.next =head
+        head, head.next  = head.next, insert_point
+    return vh.next
+    	
+             
 if __name__ == "__main__":
+    a = ListNode(2)
+    b = ListNode(3)
+    c = ListNode(4)
 
-    print(solution(3))
+    a.next = b
+    b.next =c
+    a.show()
+    x = reverse(a)
+    x.show()
+

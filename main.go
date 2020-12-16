@@ -44,12 +44,60 @@ func SearchIsland(mesh [][]int) int {
 }
 
 func main() {
-	var v = [][]int{
-		{0, 0, 0, 0, 0, 0},
-		{0, 0, 1, 1, 1, 0},
-		{0, 0, 1, 1, 1, 0},
-		{0, 0, 1, 1, 1, 0},
-		{0, 0, 0, 0, 0, 0},
+	// var v = [][]int{
+	// 	{0, 0, 0, 0, 0, 0},
+	// 	{0, 0, 1, 1, 1, 0},
+	// 	{0, 0, 1, 1, 1, 0},
+	// 	{0, 0, 1, 1, 1, 0},
+	// 	{0, 0, 0, 0, 0, 0},
+	// }
+	// fmt.Printf("%d\n", SearchIsland(v))
+	a := Node{
+		Value: "a",
+		Children: []*Node{
+			&Node{"b", nil},
+			&Node{"c", nil},
+			&Node{"d", []*Node{&Node{"e", nil}}},
+		},
 	}
-	fmt.Printf("%d\n", SearchIsland(v))
+	k := visit(&a, 2)
+	for x := range k {
+		fmt.Println(k[x].Value)
+	}
+
+}
+
+type Node struct {
+	Value    string
+	Children []*Node
+}
+
+func visit(root *Node, n int) []*Node {
+	if root == nil {
+		return nil
+	}
+	if n == 0 {
+		return []*Node{root}
+	}
+	queue := make([]*Node, 0)
+	queue = append(queue, root)
+	end := root
+	level := 0
+	for {
+		if len(queue) == 0 {
+			break
+		}
+		cur := queue[0]
+		queue = queue[1:]
+		queue = append(queue, cur.Children...) // 子节点入队
+
+		if cur == end {
+			end = queue[len(queue)-1]
+			level++
+		}
+		if level == n {
+			return queue
+		}
+	}
+	return nil
 }
